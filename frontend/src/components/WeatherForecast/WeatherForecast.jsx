@@ -3,7 +3,6 @@ import Card from '../Card/Card';
 import styles from './WeatherForecast.module.scss';
 
 const WeatherForecast = ({ weatherDataHourly }) => {
-  // function to get unique day names (show only 5 days)
   const getUniqueDayNames = () => {
     if (!weatherDataHourly) return [];
 
@@ -26,7 +25,7 @@ const WeatherForecast = ({ weatherDataHourly }) => {
   const uniqueDayNames = getUniqueDayNames();
 
   return (
-    <Card title={'Weather Forecast'}>
+    <Card title={'Weather'}>
       <div
         className={styles.forecastScroll}
         role="region"
@@ -48,7 +47,8 @@ const WeatherForecast = ({ weatherDataHourly }) => {
                           alt={data.weather[0].description || 'Weather icon'}
                         />
                         <p>
-                          {data.main.temp.toFixed(1)} <span>°C</span>
+                          {data.main.temp.toFixed(1)}
+                          <span>°C</span>
                         </p>
                       </li>
                     );

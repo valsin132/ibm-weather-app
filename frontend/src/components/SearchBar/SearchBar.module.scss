@@ -16,12 +16,12 @@
     background: transparent;
     border: none;
     outline: none;
-    color: white;
-    font-size: 16px;
+    color: #000;
+    font-size: 18px;
 }
 
 .searchInput::placeholder {
-    color: white;
+    color: #000;
 }
 
 .searchSuggestions {
@@ -32,10 +32,10 @@
 }
 
 .searchSuggestion {
-    font-size: 16px;
+    font-size: 18px;
     padding: 5px;
     cursor: pointer;
-    color: white;
+    color: #000;
     border: none;
     background: none;
 }

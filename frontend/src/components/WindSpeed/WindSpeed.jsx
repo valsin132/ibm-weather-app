@@ -17,10 +17,10 @@ const WindSpeed = ({ windSpeed }) => {
             value={windSpeed}
             currentValueText="#{value} m/s"
             currentValuePlaceholderStyle={'#{value}'}
-            startColor={'#7900F2'}
-            endColor={'#390768'}
-            needleColor="#fff"
-            textColor="#F8FAFC"
+            startColor={'#9faac3'}
+            endColor={'#817fa0'}
+            needleColor="#000"
+            textColor="#000"
           />
         )}
       </div>
