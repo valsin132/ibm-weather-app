@@ -1,0 +1,13 @@
+.conditionsGrid {
+    padding-top: 2rem;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+@media screen and (max-width: '700px') {
+    .conditionsGrid {
+        padding-top: 0;
+        font-size: 1rem;
+    }
+}

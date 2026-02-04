@@ -1,0 +1,40 @@
+.forecastScroll {
+    overflow-x: scroll;
+    display: flex;
+    gap: 3rem;
+    padding: 1rem;
+}
+
+.forecastScroll::-webkit-scrollbar {
+    border-radius: 50px;
+    height: 10px;
+    border: 1px solid #d5d5d5;
+}
+
+.forecastScroll::-webkit-scrollbar-track {
+    border-radius: 50px;
+    background: #eeeeee;
+}
+
+.forecastScroll::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background: #b0b0b0;
+    cursor: pointer;
+}
+
+.dayWithDate {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.forecastList {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 1rem;
+}
+
+.forecastItem {
+    min-width: 55px;
+}

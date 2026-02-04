@@ -1,0 +1,45 @@
+.container {
+    max-width: 500px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.searchLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.searchInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+}
+
+.searchInput::placeholder {
+    color: white;
+}
+
+.searchSuggestions {
+    margin-top: 5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    list-style: none;
+    padding: 0;
+}
+
+.searchSuggestion {
+    font-size: 16px;
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+    border: none;
+    background: none;
+}
+
+.searchSuggestion:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
