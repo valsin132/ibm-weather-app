@@ -1,5 +1,5 @@
 import express from 'express';
-import { topSearches, addSearch } from '../controllers/searcheController.js';
+import { topSearches, addSearch } from '../controllers/searchController.js';
 
 const router = express.Router();
 
