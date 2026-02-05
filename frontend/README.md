@@ -1,16 +1,93 @@
-# React + Vite
+# 🌦️ Weather Forecast App (Full Stack)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack weather forecasting app built with **React (JavaScript + Vite)** on the frontend and **Node.js + Express + MongoDB** on the backend. The backend acts as a proxy to the [openweathermap.org](https://openweathermap.org) API and also logs city view activity in a MongoDB database.
 
-Currently, two official plugins are available:
+> 🔗 **Hosted on AWS**  
+> 🖥️ Frontend: []()  
+> ⚙️ Backend: []()
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
 
-## React Compiler
+- **Real-time Weather Data:** Access long-term weather forecasts by city.
+- **City Search:** Find cities with a responsive search bar.
+- **Top Viewed Cities:** Tracks and displays the most frequently searched cities.
+- **User Logging:** Logs user activity (selected cities) to MongoDB.
+- **Responsive UI:** Works seamlessly on mobile and desktop.
+- **Proxy Backend:** Bypasses CORS issues when accessing external APIs.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🚀 Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🔧 Backend
+
+- **Node.js**
+- **Express**
+- **MongoDB + Mongoose**
+- **dotenv** for environment config
+- **Hosted on AWS**
+
+### 🖥️ Frontend
+
+- **React + JavaScript**
+- **Vite** (build tool)
+- **AXIOS** for data fetching and caching
+- **SCSS** for styling
+- **Hosted on AWS**
+
+---
+
+## Installation
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Setup
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Urnesto/ibm-weather-app.git
+cd ibm-weather-app
+```
+
+2. Install backend dependencies:
+
+```bash
+cd backend
+npm install
+```
+
+3. Install frontend dependencies:
+
+```bash
+cd frontend
+npm install
+```
+
+## Usage
+
+### Running the Application Locally
+
+1. Start the backend server:
+
+```bash
+cd backend
+npm start
+```
+
+2. In a separate terminal, start the frontend:
+
+```bash
+cd frontend
+npm run dev
+```
+
+3. Open your browser and navigate to: `http://localhost:5173`
+
+### Author
+
+Made by Valdemaras Sinkevicius
+
