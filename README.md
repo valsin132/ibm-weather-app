@@ -3,8 +3,8 @@
 A full-stack weather forecasting app built with **React (JavaScript + Vite)** on the frontend and **Node.js + Express + MongoDB** on the backend. The backend acts as a proxy to the [openweathermap.org](https://openweathermap.org) API and also logs city view activity in a MongoDB database.
 
 > 🔗 **Hosted on AWS**  
-> 🖥️ Frontend: []()  
-> ⚙️ Backend: []()
+> 🖥️ Frontend: [http://13.60.15.250](http://13.60.15.250)  
+> ⚙️ Backend: [http://13.60.15.250:8000/api/search/top](http://13.60.15.250:8000/api/search/top)
 
 ## 🌟 Features
 
