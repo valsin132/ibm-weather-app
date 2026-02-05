@@ -1,0 +1,15 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #c3e4f3;
+  color: #242424;
+}
+
+p {
+  font-weight: 500;
+}

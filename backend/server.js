@@ -17,7 +17,7 @@ app.use('/api/weather', weatherRoutes);
 
 connectToDb()
   .then(() => {
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    app.listen(PORT || 8000, () => console.log(`Server running on port ${PORT}`));
   })
   .catch((err) => {
     console.error('Failed to connect to the database', err);
