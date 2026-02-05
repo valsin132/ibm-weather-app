@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_SERVER_URL || 'http://13.60.15.250:8000';
 
 export const fetchWeatherData = async (cityName) => {
   try {
