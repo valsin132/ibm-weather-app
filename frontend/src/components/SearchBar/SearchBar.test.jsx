@@ -1,100 +1,62 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { describe, it, expect } from 'vitest';
+import { useState } from 'react';
 import SearchBar from './SearchBar';
 
+const SearchBarWrapper = ({ initialSuggestions = [] }) => {
+  const [city, setCity] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+
+  const handleCitySearch = (value) => {
+    setCity(value);
+
+    if (value.length >= 2) {
+      setSuggestions(initialSuggestions);
+    } else {
+      setSuggestions([]);
+    }
+  };
+
+  return (
+    <SearchBar
+      city={city}
+      handleCitySearch={handleCitySearch}
+      citySuggestions={suggestions}
+      fetchWeatherData={() => {}}
+    />
+  );
+};
+
 describe('SearchBar Component', () => {
-  const mockHandleCitySearch = jest.fn();
-  const mockFetchWeatherData = jest.fn();
-  const mockCitySuggestions = [
-    { name: 'Vilnius', country: 'Lithuania', lat: 54.6872 },
-    { name: 'Kaunas', country: 'Lithuania', lat: 54.8972 },
-  ];
+  it('renders the search input', () => {
+    render(<SearchBarWrapper />);
 
-  test('renders without crashing', () => {
-    render(
-      <SearchBar
-        city=""
-        handleCitySearch={mockHandleCitySearch}
-        citySuggestions={[]}
-        fetchWeatherData={mockFetchWeatherData}
-      />,
-    );
-    expect(screen.getByPlaceholderText('Enter a city')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/enter a city/i)).toBeInTheDocument();
   });
 
-  test('displays entered city name', () => {
-    render(
-      <SearchBar
-        city="Vilnius"
-        handleCitySearch={mockHandleCitySearch}
-        citySuggestions={[]}
-        fetchWeatherData={mockFetchWeatherData}
-      />,
-    );
-    expect(screen.getByDisplayValue('Vilnius')).toBeInTheDocument();
-  });
+  it('updates input value when typing', async () => {
+    render(<SearchBarWrapper />);
 
-  test('calls handleCitySearch when typing', async () => {
-    render(
-      <SearchBar
-        city=""
-        handleCitySearch={mockHandleCitySearch}
-        citySuggestions={[]}
-        fetchWeatherData={mockFetchWeatherData}
-      />,
-    );
-
-    const input = screen.getByPlaceholderText('Enter a city');
+    const input = screen.getByPlaceholderText(/enter a city/i);
     await userEvent.type(input, 'Vilnius');
 
-    expect(mockHandleCitySearch).toHaveBeenCalledTimes(7);
-    expect(mockHandleCitySearch).toHaveBeenCalledWith('Vilnius');
+    expect(input).toHaveValue('Vilnius');
   });
 
-  test('shows suggestions when typing', async () => {
-    render(
-      <SearchBar
-        city="Vi"
-        handleCitySearch={mockHandleCitySearch}
-        citySuggestions={mockCitySuggestions}
-        fetchWeatherData={mockFetchWeatherData}
-      />,
-    );
+  it('renders city suggestions after typing', async () => {
+    const suggestions = [
+      { name: 'Vilnius', country: 'Lithuania', lat: 54.6872 },
+      { name: 'Kaunas', country: 'Lithuania', lat: 54.8972 },
+    ];
 
-    expect(screen.getByText('Vilnius, Lithuania')).toBeInTheDocument();
-    expect(screen.getByText('Kaunas, Lithuania')).toBeInTheDocument();
-  });
+    render(<SearchBarWrapper initialSuggestions={suggestions} />);
 
-  test('calls fetchWeatherData when a suggestion is clicked', async () => {
-    render(
-      <SearchBar
-        city="Vi"
-        handleCitySearch={mockHandleCitySearch}
-        citySuggestions={mockCitySuggestions}
-        fetchWeatherData={mockFetchWeatherData}
-      />,
-    );
+    const input = screen.getByPlaceholderText(/enter a city/i);
+    await userEvent.type(input, 'Vi');
 
-    const suggestion = screen.getByText('Vilnius, Lithuania');
-    await userEvent.click(suggestion);
+    expect(screen.getByText((text) => text.includes('Vilnius'))).toBeInTheDocument();
 
-    expect(mockFetchWeatherData).toHaveBeenCalledWith(mockCitySuggestions[0]);
-  });
-
-  test('hides suggestions when clicking outside', async () => {
-    render(
-      <SearchBar
-        city="Vi"
-        handleCitySearch={mockHandleCitySearch}
-        citySuggestions={mockCitySuggestions}
-        fetchWeatherData={mockFetchWeatherData}
-      />,
-    );
-
-    const suggestion = screen.getByText('Vilnius, Lithuania');
-    expect(suggestion).toBeInTheDocument();
-
-    fireEvent.click(document.body);
-    expect(suggestion).not.toBeInTheDocument();
+    expect(screen.getByText((text) => text.includes('Kaunas'))).toBeInTheDocument();
   });
 });

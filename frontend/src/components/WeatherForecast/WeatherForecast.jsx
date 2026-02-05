@@ -1,28 +1,10 @@
 import { getDayOfWeek } from '../../helpers/getDayOfWeek';
+import { getUniqueDayNames } from '../../helpers/getUniqueDayNames';
 import Card from '../Card/Card';
 import styles from './WeatherForecast.module.scss';
 
 const WeatherForecast = ({ weatherDataHourly }) => {
-  const getUniqueDayNames = () => {
-    if (!weatherDataHourly) return [];
-
-    const dayNames = new Set();
-    const uniqueDayNames = [];
-
-    for (let data of weatherDataHourly.list) {
-      const dayName = getDayOfWeek(data.dt);
-      if (!dayNames.has(dayName)) {
-        dayNames.add(dayName);
-        uniqueDayNames.push(dayName);
-
-        if (dayNames.size === 5) break;
-      }
-    }
-
-    return uniqueDayNames;
-  };
-
-  const uniqueDayNames = getUniqueDayNames();
+  const uniqueDayNames = getUniqueDayNames(weatherDataHourly);
 
   return (
     <Card title={'Weather'}>
